@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+    <title>Interview Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script defer src="assets/js/index.js"></script>
+</head>
+
+<body class="bg-zinc-900">
+    <div class="container mx-auto min-h-screen p-3">
+        <div class="h-full rounded-xl bg-zinc-800 text-white">
+            <!-- Navigation -->
+            <nav class="relative flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
+                <!-- Logo Section -->
+                <div class="w-full sm:w-fit flex flex-row justify-between">
+                    <div class="flex items-center gap-3 mb-4 sm:mb-0">
+                        <img class="w-10 h-10 sm:w-12 sm:h-12" src="assets/images/logo.png" alt="Logo">
+                        <div class="flex flex-col">
+                            <h1 class="text-xl sm:text-2xl sm:leading-none font-bold leading-none">the</h1>
+                            <h1 class="text-xl sm:text-2xl sm:leading-none font-bold text-primary-500 underline leading-none">play</h1>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button id="menu-toggle" class="sm:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg focus:outline-none" aria-label="Menu">
+                        <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" :class="{'rotate-45 translate-y-2': isOpen}"></div>
+                        <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" :class="{'opacity-0': isOpen}"></div>
+                        <div class="w-6 h-0.5 bg-white transition-all duration-300" :class="{'-rotate-45 -translate-y-2': isOpen}"></div>
+                    </button>
+                </div>
+
+                <!-- Navigation Links -->
+                <div id="menu" class="hidden sm:flex flex-col sm:flex-row bg-zinc-600 sm:rounded-full w-full sm:w-auto absolute sm:relative top-full left-0 mt-2 sm:mt-0">
+                    <a href="/index.html" class="leading-none bg-zinc-800 rounded-full p-3 sm:p-4 text-center">Home</a>
+                    <a href="/about-us.html" class="leading-none p-3 sm:p-4 text-center">About us</a>
+                    <a href="/bloopers.html" class="leading-none p-3 sm:p-4 text-center">Bloopers</a>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="relative p-4 sm:p-8 flex flex-col sm:flex-row min-h-[80vh]">
+                <!-- Background Gradient -->
+                <div class="absolute right-0 top-1/4 w-[300px] sm:w-[600px] h-[200px] sm:h-[300px] rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 blur-3xl"></div>
+
+                <!-- Title Section -->
+                <div class="relative z-10 text-center sm:text-left sm:absolute sm:right-0 sm:m-16 space-y-4 mb-8 sm:mb-0">
+                    <h1 class="text-4xl sm:text-7xl font-bold">
+                        Samira & <br class="hidden sm:block" />Ilian
+                    </h1>
+                    <p class="text-base sm:text-lg text-zinc-300 max-w-md mx-auto sm:mx-0">
+                        Keeping up with Samira and Ili
+                    </p>
+                </div>
+
+                <!-- Artist Image -->
+                <div class="hidden sm:block absolute left-0 bottom-0">
+                    <img src="assets/images/artists-3.png" alt="Artist profile" class="rounded-lg object-cover scale-x-[-1] max-h-[60vh]">
+                </div>
+
+                <!-- Audio Player -->
+                <div class="relative z-20 w-full max-w-md mx-auto sm:absolute sm:bottom-8 bg-white/10 backdrop-blur-2xl rounded-xl p-4 space-y-4">
+                    <div class="flex items-center gap-4">
+                        <img src="assets/images/album-cover.jpg" alt="Track artwork" class="rounded-md h-12 w-12">
+                        <div>
+                            <h3 class="font-medium">Interview</h3>
+                            <p class="text-sm text-zinc-200">2.57 minutes</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="relative h-1 bg-white/20 rounded-full">
+                        <div id="progressBar" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-pink-500 via-blue-500 to-white rounded-full"></div>
+                    </div>
+
+                    <audio id="audio">
+                        <source src="assets/audio/audio.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+
+                    <!-- Time Display -->
+                    <div class="flex justify-between text-sm text-white">
+                        <span id="passed">0:00</span>
+                        <span id="left">2:57</span>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex justify-center items-center gap-6">
+                        <button class="focus:outline-none">
+                            <img id="backward" src="assets/images/forward.png" class="scale-x-[-1] h-6 w-6 sm:h-8 sm:w-8" alt="Backward">
+                        </button>
+                        <button class="focus:outline-none">
+                            <img id="playPause" src="assets/images/play.png" class="h-6 w-6 sm:h-8 sm:w-8" alt="Play/Pause">
+                        </button>
+                        <button class="focus:outline-none">
+                            <img id="forward" src="assets/images/forward.png" class="h-6 w-6 sm:h-8 sm:w-8" alt="Forward">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Footer Logo -->
+                <div class="hidden sm:block absolute bottom-8 right-8">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-bold leading-none">the</span>
+                        <span class="text-3xl font-bold text-primary-500 underline leading-none">play</span>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

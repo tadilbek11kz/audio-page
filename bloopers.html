@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="bg-zinc-900">
+    <div class="container mx-auto min-h-screen p-3">
+        <div class="h-full rounded-xl bg-zinc-800 text-white">
+            <!-- Navigation -->
+            <nav class="relative flex flex-col sm:flex-row items-center justify-between p-4 sm:p-6">
+                <!-- Logo Section -->
+                <div class="w-full sm:w-fit flex flex-row justify-between">
+                    <div class="flex items-center gap-3 mb-4 sm:mb-0">
+                        <img class="w-10 h-10 sm:w-12 sm:h-12" src="assets/images/logo.png" alt="Logo">
+                        <div class="flex flex-col">
+                            <h1 class="text-xl sm:text-2xl sm:leading-none font-bold leading-none">the</h1>
+                            <h1 class="text-xl sm:text-2xl sm:leading-none font-bold text-primary-500 underline leading-none">play</h1>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Hamburger Button -->
+                    <button id="menu-toggle" class="sm:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg focus:outline-none" aria-label="Menu">
+                        <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" :class="{'rotate-45 translate-y-2': isOpen}"></div>
+                        <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" :class="{'opacity-0': isOpen}"></div>
+                        <div class="w-6 h-0.5 bg-white transition-all duration-300" :class="{'-rotate-45 -translate-y-2': isOpen}"></div>
+                    </button>
+                </div>
+
+                <!-- Navigation Links -->
+                <div id="menu" class="hidden sm:flex flex-col sm:flex-row bg-zinc-600 sm:rounded-full w-full sm:w-auto absolute sm:relative top-full left-0 mt-2 sm:mt-0">
+                    <a href="/index.html" class="leading-none p-3 sm:p-4 text-center">Home</a>
+                    <a href="/about-us.html" class="leading-none p-3 sm:p-4 text-center">About us</a>
+                    <a href="/bloopers.html" class="leading-none bg-zinc-800 rounded-full p-3 sm:p-4 text-center">Bloopers</a>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="relative p-4 sm:p-8 min-h-[80vh]">
+                <!-- Gradient Backgrounds -->
+                <div class="absolute left-0 top-1/4 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 blur-3xl"></div>
+                <div class="absolute right-0 bottom-1/4 w-[150px] sm:w-[200px] h-[150px] sm:h-[200px] rounded-full bg-gradient-to-tl from-pink-500/20 to-yellow-500/20 blur-3xl"></div>
+
+                <!-- Content Section -->
+                <div class="relative z-10 w-full max-w-3xl mx-auto text-center px-4">
+                    <h1 class="text-4xl sm:text-6xl font-bold mb-4 sm:mb-8">Bloopers</h1>
+                    <p class="text-lg sm:text-xl text-zinc-300 mb-8 sm:mb-12">
+                        Immerse yourself in the unique world of bloopers. Let the sounds take you on a journey.
+                    </p>
+
+                    <!-- Audio Player -->
+                    <div class="bg-white/10 backdrop-blur-lg rounded-xl p-4 sm:p-6 space-y-4">
+                        <audio id="audio">
+                            <source src="assets/audio/Daily Life (Behind The Scenes).mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                        <!-- Track Info -->
+                        <div class="flex items-center text-start gap-4">
+                            <img src="assets/images/album-cover.jpg" alt="Track artwork" class="rounded-md h-10 w-10 sm:h-12 sm:w-12">
+                            <div>
+                                <h3 id="name" class="font-medium text-sm sm:text-base">Daily Life (Behind The Scenes)</h3>
+                                <p id="total" class="text-xs sm:text-sm text-zinc-200">4:09 minutes</p>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="relative h-1 bg-white/20 rounded-full">
+                            <div id="progressBar" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-pink-500 via-blue-500 to-white rounded-full"></div>
+                        </div>
+
+                        <!-- Time Display -->
+                        <div class="flex justify-between text-xs sm:text-sm text-zinc-400">
+                            <span id="passed">0:00</span>
+                            <span id="left">4:09</span>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex justify-center items-center gap-4 sm:gap-6">
+                            <button class="hover:opacity-80 transition-opacity">
+                                <img id="prev" src="assets/images/forward.png" class="scale-x-[-1] h-6 w-6 sm:h-8 sm:w-8" alt="Previous">
+                            </button>
+                            <button class="hover:opacity-80 transition-opacity">
+                                <img id="playPause" src="assets/images/play.png" class="h-6 w-6 sm:h-8 sm:w-8" alt="Play">
+                            </button>
+                            <button class="hover:opacity-80 transition-opacity">
+                                <img id="next" src="assets/images/forward.png" class="h-6 w-6 sm:h-8 sm:w-8" alt="Next">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marquee Text -->
+                <div class="relative bottom-0 left-0 right-0 overflow-hidden">
+                    <p class="text-6xl sm:text-9xl font-bold text-white/5 whitespace-nowrap animate-marquee">
+                        bloopers • bloopers • bloopers • bloopers • bloopers • bloopers • bloopers
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="assets/js/bloopers.js"></script>
+</body>
+
+</html>
